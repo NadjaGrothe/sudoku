@@ -1,7 +1,9 @@
 # SUDOKU GAME
 
 ### About:
-A Fun little Sunday project to create my version of the popular puzzle game: sudoku. The project will be written in React using TypeScript.
+A Fun little Sunday* 🍌 project to create my version of the popular puzzle game: sudoku. The project will be written in React using TypeScript.
+
+\* the sun ☀️ was too tempting, so this is no longer a Sunday project
 
 ### Goals:
 Recap, solidify and improve my React, TypeScript and computational thinking skills.
@@ -12,7 +14,10 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
 - Set-up:
     - playing board 
         - consists of a 9x9 grid
-            - additionally "split" into 9 3x3 grid boxes
+        ![playing board](sudoku_board.PNG)
+        - additionally "split" into 9 3x3 grid boxes
+        ![3x3 grid](./sudoku_3x3grids.PNG)
+[excalidraw link](https://excalidraw.com/#json=0sxfaCzBmU8z4Q7DHftuZ,w1eRHowgKi6kO5n1DX5dOA)    
     - numbers
         - 1-9 are "valid" numbers
         - some cells on the board are pre-filled with numbers
@@ -73,20 +78,35 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
 ## DEVELOPMENT STEP-BY-STEP:
 1. create React app with typescript
 
-1. generate empty playing board
+1. generate empty playing board 📋
     - empty grid 
         - take in boardState and onClick function (to pass down to square)
         - create a "square" component and map through a default boardState array 
     - squares are interactive (by default) 
         - take in number value & onCLick function as props
         - update the boardState array
-    - squares should highlight when clicked
-    - write tests
+    - squares should highlight when clicked/selected
+    - write tests 🧪 *(rendering, clickable, number value displaying)*
     
-1. generate number input buttons 1-9
+1. generate number input buttons 1-9 🔢
     - input number should display on selected cell
-1. pre-fill some cells with numbers
+        - needs to set the state of selected square
+    - write tests 🧪 *(rendering, clickable, state update)*
+
+1. research sudoku puzzles 🎲 <br>
+*I want to avoid writing an algorithm to create valid sudoku puzzles (for now at least)*
+    - check for an npm package
+        - use for generation of valid sudoku puzzles 
+        - check format of generated puzzles 
+    - hard-coding one puzzle initially 
+        - possibility to create/import more puzzles later (separate file)
+        - possibility to create a random puzzle button
+1. pre-fill some cells with numbers 🔢
     - pre-filled cells need to be non-interactive
     - visualize cells being non interactive
-    - write some tests (numbers displaying, cells being non-interactive, cells having different style)
-1. 
+    - ❗🤔❗ decide how to differentiate between pre-filled and player-filled squares (possibly take in another prop to set interactivity to false if the cell has been pre-filled
+        - possibly run a one time function to adjust prop of pre-filled cells only (needs to run once on initiating board)
+        - recap on (preventing) re-rendering in react, to avoid resetting this prop
+        - else save pre-filled values in separate state to set interactivity → not ideal as it would have to run each time the player inputs a number)
+    - write some tests 🧪 *(numbers displaying, cells being non-interactive, cells having different style)*
+1. implement validation functionality 🚦
