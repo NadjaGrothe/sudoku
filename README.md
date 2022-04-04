@@ -76,7 +76,7 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
     - use a sudoku generator npm package
 
 ## DEVELOPMENT STEP-BY-STEP:
-1. create React app with typescript
+1. create React app with typescript ✅
 
 1. generate empty playing board 📋
     - empty grid 
@@ -110,3 +110,20 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
         - else save pre-filled values in separate state to set interactivity → not ideal as it would have to run each time the player inputs a number)
     - write some tests 🧪 *(numbers displaying, cells being non-interactive, cells having different style)*
 1. implement validation functionality 🚦
+
+
+---
+## File structure:
+
+```
+├── /src
+    └── /components
+        ├── /Board
+        │   ├── /Square
+        │   │   ├── index.js
+        │   │   ├── Square.test.js
+        │   │   └── Square.styles.css
+        │   ├── Board.styles.css
+        │   ├── Board.test.js
+        │   └── index.js
+```
