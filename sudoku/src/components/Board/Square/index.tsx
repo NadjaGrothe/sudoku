@@ -9,6 +9,9 @@ export interface SquareProps {
 }
 
 function Square({ index, value, isDisabled, onChange }: SquareProps) {
+   // TODO: is there a better html tag than input I could use, that would make testing easier?
+   // ? possibly use tables? (<td></td> for data cells in tables) (<tr></tr> for rows of each of the 9 arrays)
+
    return (
       <input
          key={index}
@@ -19,7 +22,7 @@ function Square({ index, value, isDisabled, onChange }: SquareProps) {
          onChange={onChange}
          data-testid="board-square"
       ></input>
-   );}
-   
+   );
+}
 
 export default Square;
