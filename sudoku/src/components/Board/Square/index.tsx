@@ -2,29 +2,24 @@ import React from "react";
 import "./Square.style.css";
 
 export interface SquareProps {
-   key: number
+   index: number;
    value?: number | undefined;
    isDisabled: boolean;
    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Square({ key, value, isDisabled, onChange }: SquareProps) {
-   return isDisabled ? (
+function Square({ index, value, isDisabled, onChange }: SquareProps) {
+   return (
       <input
-         key={key}
-         className="Board-square"
-         value={value}
-         disabled={isDisabled}
-      ></input>
-   ) : (
-      <input
-         key={key}
+         key={index}
          className="Board-square"
          type="number"
          defaultValue={value}
          disabled={isDisabled}
          onChange={onChange}
+         data-testid="board-square"
       ></input>
-   );
-}
+   );}
+   
+
 export default Square;
