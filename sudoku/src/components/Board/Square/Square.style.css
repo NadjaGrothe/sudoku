@@ -1,7 +1,7 @@
 .Board-square {
    background-color: white;
-   width: 5vw;
-   height: 5vh;
+   width: 4vh;
+   height: 4vh;
    border: 1px, black;
    text-align: center;
 }
