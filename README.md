@@ -1,3 +1,5 @@
+This is a React.js project bootstrapped with create-react-app --template typescript.
+
 # SUDOKU GAME
 
 ### About:
