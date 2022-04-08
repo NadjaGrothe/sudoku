@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Square, { SquareProps } from "..";
+import Square, { SquareProps } from "../components/Board/Square";
 
 /* FIXME: test suite is not working properly 
  - tests seem to be "accumulating" and being re-run. 

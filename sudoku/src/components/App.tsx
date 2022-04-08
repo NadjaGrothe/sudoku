@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import Square from "./components/Board/Square";
+import Square from "./Board/Square";
 
 function App() {
    const [board, setBoard] = useState<number[][]>(
@@ -13,11 +13,11 @@ function App() {
             <h1>Sudoku </h1>
          </header>
          <main className="App-main">
-            <Square index={1} value={123} isDisabled={true}></Square>
+            <Square index={1} value={123} readOnly={true}></Square>
             <Square
                index={2}
                value={undefined}
-               isDisabled={false}
+               readOnly={false}
                onChange={(e) => console.log(e.target.value)}
             ></Square>
          </main>

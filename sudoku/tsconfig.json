@@ -17,5 +17,5 @@
       "jsx": "react-jsx",
       //"types": ["react/next", "react-dom/next"]
    },
-   "include": ["src", "src/components/Board/Square/__test__/Square.test.tsx"]
+   "include": ["src", "src/__tests__/Square.test.tsx"]
 }
