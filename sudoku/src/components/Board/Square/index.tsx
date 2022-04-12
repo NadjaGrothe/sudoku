@@ -1,20 +1,27 @@
 import React from "react";
-import "./Square.style.css";
+import "./Square.module.css";
 
 export interface SquareProps {
-   index: number;
+   rowIndex: number;
+   columnIndex: number;
+   //index: number;
    value?: number | undefined;
    readOnly: boolean;
    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Square({ index, value, readOnly, onChange }: SquareProps) {
-   // TODO: is there a better html tag than input I could use, that would make testing easier?
-   // ? possibly use tables? (<td></td> for data cells in tables) (<tr></tr> for rows of each of the 9 arrays)
+function Square({
+   rowIndex,
+   columnIndex,
+   value,
+   readOnly,
+   onChange,
+}: SquareProps) {
+   // TODO: create max length validation for number input
 
    return (
       <input
-         key={index}
+         key={"" + rowIndex + columnIndex}
          className="Board-square"
          type="number"
          defaultValue={value}
