@@ -1,11 +1,30 @@
 import React, { useState } from "react";
+import { createSudokuBoard, SudokuCreator } from "@algorithm.ts/sudoku";
+
 import "./App.css";
 import Board from "./Board";
 
 function App() {
-   const [board, setBoard] = useState<number[][]>(
-      Array(9).fill(Array(9).fill(0))
-   );
+   /* 
+      ** SUDOKU GENERATOR NPM PACKAGE ** 
+      https://www.npmjs.com/package/@algorithm.ts/sudoku
+
+      - generates an object 
+         - with 9x9 sudoku puzzle 
+         - and solution (will only use puzzle)
+      - difficulty easy if param empty or creator.createSudoku(1.0) for hard
+
+      ! puzzle is created with numbers 0-8
+      ! non-filled numbers are -1
+
+      TODO: add 1 to each number above 0
+   
+   */
+
+   const creator = new SudokuCreator({ childMatrixSize: 3 });
+   const puzzle = creator.createSudoku().puzzle;
+
+   const [board, setBoard] = useState<number[][]>(puzzle);
 
    return (
       <div className="App">
