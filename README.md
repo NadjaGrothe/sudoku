@@ -80,15 +80,15 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
 
 1. generate empty playing board 📋
     - empty grid 
-        - take in boardState and onClick function (to pass down to square)
-        - create a "square" component and map through a default boardState array 
+        - take in boardState and onClick function (to pass down to square) → *currently using onChange function* ✅
+        - create a "square" component and map through a default boardState array ✅
     - squares are interactive (by default) 
-        - take in number value & onCLick function as props
-        - update the boardState array
-    - squares should highlight when clicked/selected
-    - write tests 🧪 *(rendering, clickable, number value displaying)*
+        - take in number value & onCLick *(→ onChange)* function as props ✅
+        - TODO: update the boardState array ⏰ *(add functionality after implementing sudoku generator npm package)*
+    - squares should highlight when clicked/selected ⏰ *(do CSS later, not required for functionality)*
+    - FIXME: write tests 🧪 *(rendering, clickable, number value displaying)* ⏰ *(test are not working yet)*
     
-1. generate number input buttons 1-9 🔢
+1. ⏰ *(use keyboard input initially, implement buttons later on)* generate number input buttons 1-9 🔢
     - input number should display on selected cell
         - needs to set the state of selected square
     - write tests 🧪 *(rendering, clickable, state update)*
@@ -117,13 +117,17 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
 
 ```
 ├── /src
+    ├── /__tests__
+    │   ├── App.test.tsx
+    │   └── Square.test.tsx
     └── /components
         ├── /Board
+        │   ├── /Row
+        │   │   ├── index.tsx
+        │   │   └── Row.module.css        
         │   ├── /Square
-        │   │   ├── index.js
-        │   │   ├── Square.test.js
-        │   │   └── Square.styles.css
-        │   ├── Board.styles.css
-        │   ├── Board.test.js
-        │   └── index.js
+        │   │   ├── index.tsx
+        │   │   └── Square.module.css
+        │   ├── Board.module.css
+        │   └── index.tsx
 ```

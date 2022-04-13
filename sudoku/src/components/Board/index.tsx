@@ -5,17 +5,13 @@ import Row from "./Row";
 
 export interface BoardProps {
    rowIndex?: number;
-   columnIndex?: number;
    board: (number | undefined)[][];
    row?: (number | undefined)[];
-   square?: number | undefined;
    readOnly: boolean;
    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Board({ board, onChange, readOnly }: BoardProps): JSX.Element {
-   
-
    return (
       <div className={style.SudokuBoard}>
          {board.map((row, rowIndex) => {
@@ -25,6 +21,7 @@ function Board({ board, onChange, readOnly }: BoardProps): JSX.Element {
                   rowIndex={rowIndex}
                   columnIndex={rowIndex}
                   readOnly={readOnly}
+                  onChange={onChange}
                />
             );
          })}

@@ -4,7 +4,6 @@ import style from "./Square.module.css";
 export interface SquareProps {
    rowIndex: number;
    columnIndex: number;
-   //index: number;
    squareValue?: number | undefined;
    readOnly: boolean;
    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -19,6 +18,7 @@ function Square({
 }: SquareProps) {
    // TODO: create max length validation for number input
    // TODO: only allow input numbers 1-9
+   // TODO: if value is 0, empty input field
 
    return (
       <input

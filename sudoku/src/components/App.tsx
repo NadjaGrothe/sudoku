@@ -6,8 +6,6 @@ function App() {
    const [board, setBoard] = useState<number[][]>(
       Array(9).fill(Array(9).fill(0))
    );
-   
-   
 
    return (
       <div className="App">
@@ -18,7 +16,7 @@ function App() {
             <Board
                board={board}
                onChange={(e) => console.log(e.target.value)}
-               readOnly={true}
+               readOnly={false}
             />
             {/* <Square index={1} value={1} readOnly={true}></Square>
             <Square

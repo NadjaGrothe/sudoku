@@ -7,14 +7,13 @@ import Square, { SquareProps } from "../components/Board/Square";
  - Eventually RTL finds multiple of the same component causing issues.
 
  >>> commented out majority of tests; revisit later
- 
- TODO: find a better matcher for input fields & use rerender to update changed props
 */
 
 let defaultTestProps: SquareProps = {
-   index: 1,
-   value: 5,
-   isDisabled: false,
+   rowIndex: 0,
+   columnIndex: 0,
+   squareValue: 5,
+   readOnly: false,
    onChange: jest.fn(),
 };
 
