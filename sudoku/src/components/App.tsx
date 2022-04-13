@@ -6,6 +6,8 @@ function App() {
    const [board, setBoard] = useState<number[][]>(
       Array(9).fill(Array(9).fill(0))
    );
+   
+   
 
    return (
       <div className="App">

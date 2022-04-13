@@ -19,6 +19,7 @@ function Row({ row, rowIndex, onChange, readOnly }: RowProps): JSX.Element {
             row.map((square, columnIndex) => {
                return (
                   <Square
+                     squareValue={square}
                      rowIndex={rowIndex}
                      columnIndex={columnIndex}
                      readOnly={readOnly}

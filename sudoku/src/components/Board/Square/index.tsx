@@ -1,11 +1,11 @@
 import React from "react";
-import "./Square.module.css";
+import style from "./Square.module.css";
 
 export interface SquareProps {
    rowIndex: number;
    columnIndex: number;
    //index: number;
-   value?: number | undefined;
+   squareValue?: number | undefined;
    readOnly: boolean;
    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -13,18 +13,19 @@ export interface SquareProps {
 function Square({
    rowIndex,
    columnIndex,
-   value,
+   squareValue,
    readOnly,
    onChange,
 }: SquareProps) {
    // TODO: create max length validation for number input
+   // TODO: only allow input numbers 1-9
 
    return (
       <input
+      className={style.boardSquare}
          key={"" + rowIndex + columnIndex}
-         className="Board-square"
          type="number"
-         defaultValue={value}
+         defaultValue={squareValue}
          readOnly={readOnly}
          onChange={onChange}
          data-testid="board-square"
