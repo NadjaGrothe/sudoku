@@ -27,7 +27,7 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
         - the remaining cells are empty (hidden)
             - empty/hidden cells are interactive
     - input
-        - via keyboard or buttons
+        - via **keyboard** (or buttons) 
 
 - Rules:
     - player should fill the empty/hidden cells with numbers
@@ -38,14 +38,14 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
         - with pre-filled numbers
         - pre-filled cells are non-interactive
             - if player clicks on non-interactive cell, nothing happens
-            - visually differentiate between interactive and non-interactive cells
+            - visually differentiate between interactive and non-interactive cells ⏰ *(do CSS later)*
 
     - player clicks on an empty/hidden cell (interactive)
-        - should be visually highlighted
+        - should be visually highlighted ⏰ *(do CSS later)*
     - player inputs a number from 1-9
         - game runs verification function
-        - highlight any obvious mistakes (conflicts in rows, columns and 3x3 grid) → for both player-input and pre-filled Numbers
-        - cells remain interactive for editing
+        - highlight any obvious mistakes (conflicts in rows, columns and 3x3 grid) → for both player-input and pre-filled Numbers ⏰ *(do CSS later)*
+        - cells remain interactive for editing 
     - player repeats input until all cells are filled
     - once all cells are filled 
         - and there are no conflicts the player wins
@@ -53,29 +53,30 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
 
 ### Notes:
 - **Research:** solution validation:
-    - hidden numbers: 
-        - all cells are filled 
-        - some numbers are hidden for the player
-        - validate if player input matches the hidden number 
-        - potential issues: 
-            - if there are multiple possible solution, there will be a "false negative" result
-            - comparison between input and hidden number can only happen at the end (as the player should not be able to just try all the numbers, to see which one is correct)
-            - the cell would still have to display obvious errors (conflicts in rows, columns or 3x3 grid) → verification function on input
-    - empty numbers:
+    - ~~hidden accurate numbers:~~
+        - ~~all cells are filled~~ 
+        - ~~some numbers are hidden for the player~~
+        - ~~validate if player input matches the hidden number~~ 
+        - ~~potential issues:~~ 
+            - ~~if there are multiple possible solution, there will be a "false negative" result~~
+            - ~~comparison between input and hidden number can only happen at the end (as the player should not be able to just try all the numbers, to see which one is correct)~~
+            - ~~the cell would still have to display obvious errors (conflicts in rows, columns or 3x3 grid) → verification function on input~~
+    - 👍 empty numbers:
         - only the visible cells have numbers
+        - empty squares will have -1 as value
         - on each input a function to verify conflicts would have to run (same as hidden number version)
         - potential issues:
-            - could it be possible to create "unsolvable" sudoku's?
-            - if there was a "hint" button, how would the computer know each cells number?
+            - could it be possible to create "unsolvable" sudoku's? 🩹→ using a sudoku generator
+            - if there was a "hint" button, how would the computer know each cells number? 🩹 → generic issue, create an index/key based on row & column index of square
 - **Research:** pre-filling cells:
-    - hard-code one sudoku puzzle
-        - okay as start to get it to work, but won't be scalable 
-    - create and import some pre-set sudoku puzzles from a separate file 
-        - could randomize displayed puzzle
-        - should the file only contain pre-filled cells or solutions as well?
-    - create a function to automatically populate the 9x9 grid
-        - needs verification to assure solvable puzzles
-    - use a sudoku generator npm package
+    - ~~hard-code one sudoku puzzle~~
+        - ~~okay as start to get it to work, but won't be scalable~~ 
+    - ~~create and import some pre-set sudoku puzzles from a separate file~~ 
+        - ~~could randomize displayed puzzle~~
+        - ~~should the file only contain pre-filled cells or solutions as well?~~
+    - ~~create a function to automatically populate the 9x9 grid~~
+        - ~~needs verification to assure solvable puzzles~~
+    - 👍 use a sudoku generator npm package
 
 ## DEVELOPMENT STEP-BY-STEP:
 1. create React app with typescript ✅
@@ -93,24 +94,24 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
 1. ⏰ *(use keyboard input initially, implement buttons later on)* generate number input buttons 1-9 🔢
     - input number should display on selected cell
         - needs to set the state of selected square
-    - write tests 🧪 *(rendering, clickable, state update)*
+    - write tests 🧪 *(rendering, clickable, state update)* 
 
-1. research sudoku puzzles 🎲 <br>
+1. research sudoku puzzles 🎲 ✅ <br> 
 *I want to avoid writing an algorithm to create valid sudoku puzzles (for now at least)*
-    - check for an npm package
-        - use for generation of valid sudoku puzzles 
-        - check format of generated puzzles 
-    - hard-coding one puzzle initially 
-        - possibility to create/import more puzzles later (separate file)
-        - possibility to create a random puzzle button
+    - check for an npm package ✅
+        - use for generation of valid sudoku puzzles → will use [@algorithms.ts/sudoku](https://www.npmjs.com/package/@algorithm.ts/sudoku) ✅
+        - check format of generated puzzles → number[][] ✅
+    - ~~hard-coding one puzzle initially~~
+        - ~~possibility to create/import more puzzles later (separate file)~~
+        - ~~possibility to create a random puzzle button~~
 1. pre-fill some cells with numbers 🔢
     - pre-filled cells need to be non-interactive
     - visualize cells being non interactive
-    - ❗🤔❗ decide how to differentiate between pre-filled and player-filled squares (possibly take in another prop to set interactivity to false if the cell has been pre-filled
+    - ❗🤔❗ decide how to differentiate between pre-filled and player-filled squares (possibly take in another prop to set interactivity to false if the cell has been pre-filled)
         - possibly run a one time function to adjust prop of pre-filled cells only (needs to run once on initiating board)
         - recap on (preventing) re-rendering in react, to avoid resetting this prop
         - else save pre-filled values in separate state to set interactivity → not ideal as it would have to run each time the player inputs a number)
-    - write some tests 🧪 *(numbers displaying, cells being non-interactive, cells having different style)*
+    - write some tests 🧪 *(numbers displaying, cells being non-interactive, cells having different style)* ⏰ *(write tests later)*
 1. implement validation functionality 🚦
 
 
