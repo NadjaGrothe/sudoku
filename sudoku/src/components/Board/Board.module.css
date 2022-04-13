@@ -1,0 +1,5 @@
+.SudokuBoard {
+    display: flex;
+    flex-direction: column;
+}
+

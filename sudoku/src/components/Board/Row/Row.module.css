@@ -1,0 +1,4 @@
+SudokuRow {
+    display: flex;
+    flex-direction: column;
+}
