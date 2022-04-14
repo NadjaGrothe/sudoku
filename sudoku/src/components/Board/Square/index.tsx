@@ -22,7 +22,7 @@ function Square({
 
    return (
       <input
-      className={style.boardSquare}
+         className={style.boardSquare}
          key={"" + rowIndex + columnIndex}
          type="number"
          defaultValue={squareValue}

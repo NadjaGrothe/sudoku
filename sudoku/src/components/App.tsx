@@ -24,6 +24,8 @@ function App() {
    const creator = new SudokuCreator({ childMatrixSize: 3 });
    const puzzle = creator.createSudoku().puzzle;
 
+   console.log(puzzle)
+
    const [board, setBoard] = useState<number[][]>(puzzle);
 
    return (

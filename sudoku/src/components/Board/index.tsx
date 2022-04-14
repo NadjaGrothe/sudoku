@@ -17,6 +17,7 @@ function Board({ board, onChange, readOnly }: BoardProps): JSX.Element {
          {board.map((row, rowIndex) => {
             return (
                <Row
+                  key={rowIndex}
                   row={row}
                   rowIndex={rowIndex}
                   columnIndex={rowIndex}

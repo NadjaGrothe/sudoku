@@ -18,6 +18,7 @@ function Row({ row, rowIndex, onChange, readOnly }: RowProps): JSX.Element {
             row.map((square, columnIndex) => {
                return (
                   <Square
+                     key={"" + rowIndex + columnIndex}
                      squareValue={square}
                      rowIndex={rowIndex}
                      columnIndex={columnIndex}
