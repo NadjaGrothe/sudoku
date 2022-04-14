@@ -41,7 +41,6 @@ function App() {
             <Board
                board={board}
                onChange={(e) => console.log(e.target.value)}
-               readOnly={false}
             />
          </main>
       </div>

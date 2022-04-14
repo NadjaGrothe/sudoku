@@ -79,16 +79,16 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
     - 👍 use a sudoku generator npm package
 
 ## DEVELOPMENT STEP-BY-STEP:
-1. create React app with typescript ✅
+1. ✅ create React app with typescript 
 
-1. generate empty playing board 📋
+1. ✅ generate empty playing board 📋 
     - empty grid 
         - take in boardState and onClick function (to pass down to square) → *currently using onChange function* ✅
         - create a "square" component and map through a default boardState array ✅
     - squares are interactive (by default) 
         - take in number value & onCLick *(→ onChange)* function as props ✅
         - TODO: update the boardState array ⏰ *(add functionality after implementing sudoku generator npm package)*
-    - squares should highlight when clicked/selected ⏰ *(do CSS later, not required for functionality)*
+    - squares should highlight when clicked/selected ✅
     - FIXME: write tests 🧪 *(rendering, clickable, number value displaying)* ⏰ *(test are not working yet)*
     
 1. ⏰ *(use keyboard input initially, implement buttons later on)* generate number input buttons 1-9 🔢
@@ -96,7 +96,7 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
         - needs to set the state of selected square
     - write tests 🧪 *(rendering, clickable, state update)* 
 
-1. research sudoku puzzles 🎲 ✅ <br> 
+1. ✅ research sudoku puzzles 🎲  <br> 
 *I want to avoid writing an algorithm to create valid sudoku puzzles (for now at least)*
     - check for an npm package ✅
         - use for generation of valid sudoku puzzles → will use [@algorithms.ts/sudoku](https://www.npmjs.com/package/@algorithm.ts/sudoku) ✅
@@ -104,16 +104,22 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
     - ~~hard-coding one puzzle initially~~
         - ~~possibility to create/import more puzzles later (separate file)~~
         - ~~possibility to create a random puzzle button~~
-1. pre-fill some cells with numbers 🔢
+1. ✅ pre-fill some cells with numbers 🔢 
     - add +1 to each number > 0 in generated sudoku puzzle (generator uses 0-8, puzzle should display 1-9) ✅
-    - pre-filled cells need to be non-interactive
-    - visualize cells being non interactive ⏰ *(do CSS later)*
+    - pre-filled cells need to be non-interactive ✅
+    - visualize cells being non interactive ✅
     - ❗🤔❗ decide how to differentiate between pre-filled and player-filled squares (possibly take in another prop to set interactivity to false if the cell has been pre-filled)
         - possibly run a one time function to adjust prop of pre-filled cells only (needs to run once on initiating board)
         - recap on (preventing) re-rendering in react, to avoid resetting this prop
         - else save pre-filled values in separate state to set interactivity → not ideal as it would have to run each time the player inputs a number)
     - write some tests 🧪 *(numbers displaying, cells being non-interactive, cells having different style)* ⏰ *(write tests later)*
+
+1. input field ✏️
+    - input only allows one digit number (1-9)
+    - input onChange needs to update boardState
+
 1. implement validation functionality 🚦
+    - update of boardState triggers solution validation
 
 
 ---

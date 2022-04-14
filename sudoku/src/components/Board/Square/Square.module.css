@@ -2,8 +2,22 @@
    background-color: white;
    width: 4vh;
    height: 4vh;
-   border: 1px, black;
    text-align: center;
+
+   outline: none;
+   border: 0.1px solid var(--secondary-color);
+   box-shadow: none;
+
+}
+
+.boardSquare:disabled {
+   background-color: var(--quaternary-color);
+   color: black;
+}
+
+.boardSquare:focus {
+   box-shadow: 0 0 5px var(--tertiary-color);
+   border: 1px solid var(--tertiary-color);
 }
 
 /* * REMOVE NUMBER INPUT ARROWS * */
@@ -16,5 +30,18 @@ input::-webkit-inner-spin-button {
 
 /* Firefox */
 input[type="number"] {
-   -moz-appearance: textfield;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
 }
+
+
+/* Transition Stuff  */
+
+/* .boardSquare {
+   transition: all 0.3s ease-in-out;
+   -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition: all 0.3s ease-in-out;
+   -ms-transition: all 0.3s ease-in-out;
+   -o-transition: all 0.3s ease-in-out;
+} */
