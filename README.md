@@ -105,7 +105,7 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
         - ~~possibility to create/import more puzzles later (separate file)~~
         - ~~possibility to create a random puzzle button~~
 1. pre-fill some cells with numbers 🔢
-    - TODO: add +1 to each number > 0 in generated sudoku puzzle (generator uses 0-8, puzzle should display 1-9)
+    - add +1 to each number > 0 in generated sudoku puzzle (generator uses 0-8, puzzle should display 1-9) ✅
     - pre-filled cells need to be non-interactive
     - visualize cells being non interactive ⏰ *(do CSS later)*
     - ❗🤔❗ decide how to differentiate between pre-filled and player-filled squares (possibly take in another prop to set interactivity to false if the cell has been pre-filled)
