@@ -14,17 +14,21 @@ function App() {
          - and solution (will only use puzzle)
       - difficulty easy if param empty or creator.createSudoku(1.0) for hard
 
-      ! puzzle is created with numbers 0-8
-      ! non-filled numbers are -1
-
-      TODO: add 1 to each number above 0
-   
+      ! default puzzle is created with numbers 0-8 (adding 1 to each number to receive values of 1-9 instead)  
+      ! non-filled numbers are -1   
    */
 
+   //* Generate a random, easy, 9-by-9 sudoku puzzle
    const creator = new SudokuCreator({ childMatrixSize: 3 });
-   const puzzle = creator.createSudoku().puzzle;
-
-   console.log(puzzle)
+   /* by default createSudoku generates numbers 0-8
+      → adding 1 to each number greater or equal to 0, to get numbers 1-9
+   */
+   const puzzle = creator.createSudoku().puzzle.map((arr) =>
+      arr.map((num) => {
+         if (num >= 0) return num + 1;
+         return num;
+      })
+   );
 
    const [board, setBoard] = useState<number[][]>(puzzle);
 
@@ -39,13 +43,6 @@ function App() {
                onChange={(e) => console.log(e.target.value)}
                readOnly={false}
             />
-            {/* <Square index={1} value={1} readOnly={true}></Square>
-            <Square
-               index={2}
-               value={undefined}
-               readOnly={false}
-               onChange={(e) => console.log(e.target.value)}
-            ></Square> */}
          </main>
       </div>
    );
