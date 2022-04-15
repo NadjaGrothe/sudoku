@@ -10,7 +10,7 @@ export interface RowProps {
    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Row({ row, rowIndex, onChange }: RowProps): JSX.Element {
+function Row({ row, rowIndex, onChange, }: RowProps): JSX.Element {
    return (
       <div className={style.SudokuRow}>
          {row &&

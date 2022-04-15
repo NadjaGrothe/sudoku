@@ -21,9 +21,10 @@ function Square({
       <input
          className={style.boardSquare}
          key={"" + rowIndex + columnIndex}
+         data-index={"" + rowIndex + columnIndex}
          type="number"
          defaultValue={squareValue === -1 ? "" : squareValue}
-         disabled={squareValue === -1 ? false : true} 
+         disabled={squareValue === -1 ? false : true}
          // TODO: decide between disabled for readOnly
          onChange={onChange}
          data-testid="board-square"

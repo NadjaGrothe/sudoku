@@ -23,14 +23,29 @@ function App() {
    /* by default createSudoku generates numbers 0-8
       → adding 1 to each number greater or equal to 0, to get numbers 1-9
    */
-   const puzzle = creator.createSudoku().puzzle.map((arr) =>
+   const puzzle: number[][] = creator.createSudoku().puzzle.map((arr) =>
       arr.map((num) => {
          if (num >= 0) return num + 1;
          return num;
       })
    );
-
    const [board, setBoard] = useState<number[][]>(puzzle);
+
+   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
+      const inputValue = Number(e.target.value);
+
+      // records the two digit indexValue of a square (indexValues are two digit strings, first number refers to index of row in puzzle/board array, second number is the index inside the row → see README for clarification)
+      const rowIndex = Number(e.target.getAttribute("data-index")?.charAt(0));
+      const squareIndex = Number(e.target.getAttribute("data-index")?.charAt(1));
+      
+      console.log((board[rowIndex][squareIndex] = inputValue));
+
+      
+
+      //setBoard((board[rowIndex][squareIndex] = inputValue));
+   }
+
+   // not currently using the state
 
    return (
       <div className="App">
@@ -38,10 +53,7 @@ function App() {
             <h1>Sudoku </h1>
          </header>
          <main className="App-main">
-            <Board
-               board={board}
-               onChange={(e) => console.log(e.target.value)}
-            />
+            <Board puzzle={puzzle} onChange={handleOnChange} />
          </main>
       </div>
    );
