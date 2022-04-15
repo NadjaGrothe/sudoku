@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createSudokuBoard, SudokuCreator } from "@algorithm.ts/sudoku";
+import _ from "lodash";
 
 import "./App.css";
 import Board from "./Board";
@@ -36,16 +37,14 @@ function App() {
 
       // records the two digit indexValue of a square (indexValues are two digit strings, first number refers to index of row in puzzle/board array, second number is the index inside the row → see README for clarification)
       const rowIndex = Number(e.target.getAttribute("data-index")?.charAt(0));
-      const squareIndex = Number(e.target.getAttribute("data-index")?.charAt(1));
-      
-      console.log((board[rowIndex][squareIndex] = inputValue));
+      const squareIndex = Number(
+         e.target.getAttribute("data-index")?.charAt(1)
+      );
 
-      
+      board[rowIndex][squareIndex] = inputValue;
 
-      //setBoard((board[rowIndex][squareIndex] = inputValue));
+      setBoard(board);
    }
-
-   // not currently using the state
 
    return (
       <div className="App">
