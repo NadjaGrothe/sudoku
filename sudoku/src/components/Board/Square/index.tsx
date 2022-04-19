@@ -8,25 +8,20 @@ export interface SquareProps {
    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Square({
-   rowIndex,
-   columnIndex,
-   squareValue,
-   onChange,
-}: SquareProps) {
-   // TODO: create max length validation for number input
-   // TODO: only allow input numbers 1-9
-
+function Square({ rowIndex, columnIndex, squareValue, onChange }: SquareProps) {
    return (
       <input
          className={style.boardSquare}
          key={"" + rowIndex + columnIndex}
          data-index={"" + rowIndex + columnIndex}
          type="number"
+         min={1}
          defaultValue={squareValue === -1 ? "" : squareValue}
          disabled={squareValue === -1 ? false : true}
          // TODO: decide between disabled for readOnly
          onChange={onChange}
+         // assures user cannot enter a 0 in input field
+         onKeyDown={(e) => e.key === "0" && e.preventDefault()}
          data-testid="board-square"
       ></input>
    );

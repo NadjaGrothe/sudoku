@@ -33,7 +33,13 @@ function App() {
    const [board, setBoard] = useState<number[][]>(puzzle);
 
    function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
-      const inputValue = Number(e.target.value);
+      let inputValue = Number(e.target.value);
+
+      // max length validation for input field
+      if (inputValue > 9) {
+         e.target.value = e.target.value[0];
+         inputValue = Number(e.target.value[0]);
+      }
 
       // records the two digit indexValue of a square (indexValues are two digit strings, first number refers to index of row in puzzle/board array, second number is the index inside the row → see README for clarification)
       const rowIndex = Number(e.target.getAttribute("data-index")?.charAt(0));
