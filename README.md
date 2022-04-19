@@ -108,15 +108,16 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
     - add +1 to each number > 0 in generated sudoku puzzle (generator uses 0-8, puzzle should display 1-9) ✅
     - pre-filled cells need to be non-interactive ✅
     - visualize cells being non interactive ✅
-    - ❗🤔❗ decide how to differentiate between pre-filled and player-filled squares (possibly take in another prop to set interactivity to false if the cell has been pre-filled)
-        - possibly run a one time function to adjust prop of pre-filled cells only (needs to run once on initiating board)
-        - recap on (preventing) re-rendering in react, to avoid resetting this prop
-        - else save pre-filled values in separate state to set interactivity → not ideal as it would have to run each time the player inputs a number)
+    - ✅ decide how to differentiate between pre-filled and player-filled squares (possibly take in another prop to set interactivity to false if the cell has been pre-filled) ✅
+        - ~~possibly run a one time function to adjust prop of pre-filled cells only (needs to run once on initiating board)~~
+        - ~~recap on (preventing) re-rendering in react, to avoid resetting this prop~~
+        - ~~else save pre-filled values in separate state to set interactivity → not ideal as it would have to run each time the player inputs a number)~~
+        - → mapping through generated puzzle to render grid (which is not a state); inputValues are assigned to a state (board) to be checked for solution / no rerendering of grid (❓look into local storage later on❓)
     - write some tests 🧪 *(numbers displaying, cells being non-interactive, cells having different style)* ⏰ *(write tests later)*
 
-1. input field ✏️
-    - input only allows one digit number (1-9)
-    - input onChange needs to update boardState
+1. ✅ input field ✏️
+    - input only allows one digit number (1-9) ✅
+    - input onChange needs to update boardState ✅
 
 1. implement validation functionality 🚦
     - update of boardState triggers solution validation
