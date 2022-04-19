@@ -1,55 +1,66 @@
-import React, { useState } from "react";
-import { createSudokuBoard, SudokuCreator } from "@algorithm.ts/sudoku";
+import React, { useEffect, useMemo, useState } from "react";
+import { SudokuCreator } from "@algorithm.ts/sudoku";
 import _ from "lodash";
 
 import "./App.css";
 import Board from "./Board";
 
 function App() {
-   /* 
-      ** SUDOKU GENERATOR NPM PACKAGE ** 
-      https://www.npmjs.com/package/@algorithm.ts/sudoku
+   // useMemo to prevent generating new puzzles while playing
+   const data = useMemo(() => {
+      const creator = new SudokuCreator({ childMatrixSize: 3 });
+      const generateSudoku = creator.createSudoku();
 
-      - generates an object 
-         - with 9x9 sudoku puzzle 
-         - and solution (will only use puzzle)
-      - difficulty easy if param empty or creator.createSudoku(1.0) for hard
+      const puzzle: number[][] = generateSudoku.puzzle.map((arr) =>
+         arr.map((num) => {
+            if (num >= 0) return num + 1;
+            return num;
+         })
+      );
 
-      ! default puzzle is created with numbers 0-8 (adding 1 to each number to receive values of 1-9 instead)  
-      ! non-filled numbers are -1   
-   */
+      const solution: number[][] = generateSudoku.solution.map((arr) =>
+         arr.map((num) => {
+            if (num >= 0) return num + 1;
+            return num;
+         })
+      );
 
-   //* Generate a random, easy, 9-by-9 sudoku puzzle
-   const creator = new SudokuCreator({ childMatrixSize: 3 });
-   /* by default createSudoku generates numbers 0-8
-      → adding 1 to each number greater or equal to 0, to get numbers 1-9
-   */
-   const puzzle: number[][] = creator.createSudoku().puzzle.map((arr) =>
-      arr.map((num) => {
-         if (num >= 0) return num + 1;
-         return num;
-      })
-   );
-   const [board, setBoard] = useState<number[][]>(puzzle);
+      return { puzzle, solution };
+   }, []);
 
+   //* Set board state to generated Sudoku puzzle 
+   const [board, setBoard] = useState<number[][]>(data.puzzle);
+   
+   useEffect(() => {
+      solutionValidation(board, data.solution);
+   }, [board, data.solution]);
+
+   //* update board state on player input
    function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
       let inputValue = Number(e.target.value);
-
       // max length validation for input field
       if (inputValue > 9) {
          e.target.value = e.target.value[0];
          inputValue = Number(e.target.value[0]);
       }
-
       // records the two digit indexValue of a square (indexValues are two digit strings, first number refers to index of row in puzzle/board array, second number is the index inside the row → see README for clarification)
       const rowIndex = Number(e.target.getAttribute("data-index")?.charAt(0));
       const squareIndex = Number(
          e.target.getAttribute("data-index")?.charAt(1)
       );
 
-      board[rowIndex][squareIndex] = inputValue;
+      // update board state to reflect new player input Value
+      let tempBoard = _.cloneDeep(board);
+      tempBoard[rowIndex][squareIndex] = inputValue;
+      setBoard(tempBoard);
+   }
 
-      setBoard(board);
+   //* Solution validation functionality
+   function solutionValidation(board: number[][], solution: number[][]) {
+      // check if current board state is the same as generated solution
+      if (JSON.stringify(board) === JSON.stringify(solution)) {
+         console.log("I WON");
+      }
    }
 
    return (
@@ -58,7 +69,7 @@ function App() {
             <h1>Sudoku </h1>
          </header>
          <main className="App-main">
-            <Board puzzle={puzzle} onChange={handleOnChange} />
+            <Board puzzle={data.puzzle} onChange={handleOnChange} />
          </main>
       </div>
    );
