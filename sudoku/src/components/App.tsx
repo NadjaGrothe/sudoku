@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { SudokuCreator } from "@algorithm.ts/sudoku";
 import _ from "lodash";
 
-import "./App.css";
+import style from "./App.module.css";
 import Board from "./Board";
 
 function App() {
@@ -64,11 +64,11 @@ function App() {
    }
 
    return (
-      <div className="App">
-         <header className="App-header">
+      <div className={style.App}>
+         <header className={style.AppHeader}>
             <h1>Sudoku </h1>
          </header>
-         <main className="App-main">
+         <main className={style.AppMain}>
             <Board puzzle={data.puzzle} onChange={handleOnChange} />
          </main>
       </div>

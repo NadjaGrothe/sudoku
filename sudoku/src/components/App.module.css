@@ -1,19 +1,26 @@
 .App {
    text-align: center;
-   background-color: var(--primary-color);
+   background-color: var(--light-color);
+   background-image: linear-gradient(
+      var(--light-color),
+      var(--de-emphasized),
+      var(--secondary-color),
+      var(--primary-color),
+      var(--dark-color)
+   );
 }
 
-.App-header {
+.AppHeader {
    min-height: 20vh;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
    font-size: calc(10px + 2vmin);
-   color: var(--secondary-color);
+   color: var(--dark-color);
 }
 
-.App-main {
+.AppMain {
    min-height: 80vh;
    display: flex;
    flex-direction: column;
