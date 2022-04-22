@@ -1,7 +1,17 @@
 SudokuRow {
-    display: flex;
-    flex-direction: column;
+   display: flex;
+   flex-direction: column;
 }
 
+div:nth-child(3),
+div:nth-child(6) {
+   border-bottom: 2px solid var(--dark-color);
+}
 
+div:nth-child(9) {
+   border-bottom: 3px solid var(--dark-color);
+}
 
+div:nth-child(1) {
+   border-top: 2px solid var(--dark-color);
+}
