@@ -5,7 +5,7 @@
    text-align: center;
 
    outline: none;
-   border: 0.1vw solid var(--dark-color);
+   border: 1px solid var(--dark-color);
    box-shadow: none;
 }
 
@@ -16,36 +16,38 @@
 
 .boardSquare:focus {
    box-shadow: 0 0 5px var(--primary-color);
-   border: 0.1vw solid var(--primary-color);
+   border: 0.1px solid var(--primary-color);
 }
 
-input:nth-child(3), input:nth-child(6) {
-   border-right: 0.2vw solid var(--dark-color);
+input:nth-child(3),
+input:nth-child(6) {
+   border-right: 2px solid var(--dark-color);
 }
 input:nth-child(9) {
-   border-right: 0.3vw solid var(--dark-color);
+   border-right: 3px solid var(--dark-color);
 }
 
 input:nth-child(1) {
-   border-left: 0.3vw solid var(--dark-color);
+   border-left: 3px solid var(--dark-color);
 }
 
-input:nth-child(3):focus, input:nth-child(6):focus {
+input:nth-child(3):focus,
+input:nth-child(6):focus {
    box-shadow: 0 0 5px var(--primary-color);
-   border: 0.1vw solid var(--primary-color);
-   border-right: 0.2vw solid var(--primary-color);
+   border: 0.1px solid var(--primary-color);
+   border-right: 2px solid var(--primary-color);
 }
 
 input:nth-child(9):focus {
    box-shadow: 0 0 5px var(--primary-color);
-   border: 0.1vw solid var(--primary-color);
-   border-right: 0.3vw solid var(--primary-color);
+   border: 0.1px solid var(--primary-color);
+   border-right: 3px solid var(--primary-color);
 }
 
 input:nth-child(1):focus {
    box-shadow: 0 0 5px var(--primary-color);
-   border: 0.1vw solid var(--primary-color);
-   border-left: 0.3vw solid var(--primary-color);
+   border: 0.1px solid var(--primary-color);
+   border-left: 3px solid var(--primary-color);
 }
 
 /* * REMOVE NUMBER INPUT ARROWS * */
