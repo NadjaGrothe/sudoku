@@ -5,7 +5,7 @@
    text-align: center;
 
    outline: none;
-   border: 0.1px solid var(--dark-color);
+   border: 1px solid var(--dark-color);
    box-shadow: none;
 }
 
@@ -19,14 +19,24 @@
    border: 1px solid var(--primary-color);
 }
 
-input:nth-child(3n+0)  {
+input:nth-child(3n + 0) {
    border-right: 2px solid var(--dark-color);
 }
+input:nth-child(3n + 0):focus {
+   box-shadow: 0 0 5px var(--primary-color);
+   border: 1px solid var(--primary-color);
+   border-right: 2px solid var(--primary-color);
+}
 
-input:nth-child(1){
+input:nth-child(1) {
    border-left: 2px solid var(--dark-color);
 }
 
+input:nth-child(1):focus {
+   box-shadow: 0 0 5px var(--primary-color);
+   border: 1px solid var(--primary-color);
+   border-left: 2px solid var(--primary-color);
+}
 
 /* * REMOVE NUMBER INPUT ARROWS * */
 /* Chrome, Safari, Edge, Opera */
