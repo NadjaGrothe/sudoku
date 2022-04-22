@@ -19,6 +19,15 @@
    border: 1px solid var(--primary-color);
 }
 
+input:nth-child(3n+0)  {
+   border-right: 2px solid var(--dark-color);
+}
+
+input:nth-child(1){
+   border-left: 2px solid var(--dark-color);
+}
+
+
 /* * REMOVE NUMBER INPUT ARROWS * */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
