@@ -17,8 +17,9 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
 -  Set-up: - playing board - consists of a 9x9 grid
    ![playing board](sudoku_board.PNG) - additionally "split" into 9 3x3 grid boxes
    ![3x3 grid](./sudoku_3x3grids.PNG)
-   [excalidraw link](https://excalidraw.com/#json=0sxfaCzBmU8z4Q7DHftuZ,w1eRHowgKi6kO5n1DX5dOA)  
-    - numbers - 1-9 are "valid" numbers - some cells on the board are pre-filled with numbers - pre-filled cells cannot be changed/edited - the remaining cells are empty (hidden) - empty/hidden cells are interactive - input - via **keyboard** (or buttons)
+   [excalidraw link](https://excalidraw.com/#json=0sxfaCzBmU8z4Q7DHftuZ,w1eRHowgKi6kO5n1DX5dOA)
+
+   -  numbers - 1-9 are "valid" numbers - some cells on the board are pre-filled with numbers - pre-filled cells cannot be changed/edited - the remaining cells are empty (hidden) - empty/hidden cells are interactive - input - via **keyboard** (or buttons)
 
 -  Rules:
 
@@ -112,13 +113,23 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
    -  input onChange needs to update boardState ✅
 
 1. ✅ implement validation functionality 🚦 ✅
-   -  update of boardState triggers solution validation
+
+   -  update of boardState triggers solution validation ✅
+   -  display once player won on website ✅
+
+1. new game button ⏯️
+   -  create button component to generate new Sudoku
 
 NEXT STEPS NOTES:
 
--  display when player won
--  CSS
--  refactor code
+-  revisit SOLID principles
+-  refactor code based on SOLID principles
+-  highlight obvious mistakes
+-  add additional controls/buttons (easy/hard mode, hint, solve, number buttons)
+-  fix input (currently allows user to input of -, +, . characters)
+-  add timer
+-  change "winner" display
+-  write tests
 
 ---
 
