@@ -126,7 +126,7 @@ NEXT STEPS NOTES:
 -  refactor code based on SOLID principles
 -  highlight obvious mistakes
 -  add additional controls/buttons (easy/hard mode, hint, solve, number buttons)
--  fix input (currently allows user to input of -, +, . characters)
+-  ✅ fix input (currently allows user to input of -, +, . characters) ✅
 -  add timer
 -  change "winner" display
 -  write tests

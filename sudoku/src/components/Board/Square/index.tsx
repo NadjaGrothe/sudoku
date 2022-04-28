@@ -9,6 +9,8 @@ export interface SquareProps {
 }
 
 function Square({ rowIndex, columnIndex, squareValue, onChange }: SquareProps) {
+   const regEx = /[-+.,0]/
+
    return (
       <input
          className={style.boardSquare}
@@ -21,7 +23,7 @@ function Square({ rowIndex, columnIndex, squareValue, onChange }: SquareProps) {
          // TODO: decide between disabled for readOnly
          onChange={onChange}
          // assures user cannot enter a 0 in input field
-         onKeyDown={(e) => e.key === "0" && e.preventDefault()}
+         onKeyDown={(e) => regEx.test(e.key) && e.preventDefault()}
          data-testid="board-square"
       ></input>
    );
