@@ -120,7 +120,7 @@ Recap, solidify and improve my React, TypeScript and computational thinking skil
 1. new game button ⏯️
    -  create button component to generate new Sudoku
 
-NEXT STEPS NOTES:
+### NEXT STEPS NOTES:
 
 -  revisit SOLID principles
 -  refactor code based on SOLID principles
