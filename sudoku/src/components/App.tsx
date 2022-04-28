@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { SudokuCreator } from "@algorithm.ts/sudoku";
+// lodash used to create deep copy of board state
 import _ from "lodash";
 
 import style from "./App.module.css";
@@ -28,9 +29,11 @@ function App() {
       return { puzzle, solution };
    }, []);
 
-   //* Set board state to generated Sudoku puzzle 
+   //* Set board state to generated Sudoku puzzle
    const [board, setBoard] = useState<number[][]>(data.puzzle);
-   
+   //* player won state
+   const [won, setWon] = useState<boolean>(false);
+
    useEffect(() => {
       solutionValidation(board, data.solution);
    }, [board, data.solution]);
@@ -59,7 +62,7 @@ function App() {
    function solutionValidation(board: number[][], solution: number[][]) {
       // check if current board state is the same as generated solution
       if (JSON.stringify(board) === JSON.stringify(solution)) {
-         console.log("I WON");
+         setWon(true);
       }
    }
 
@@ -69,6 +72,7 @@ function App() {
             <h1>Sudoku </h1>
          </header>
          <main className={style.AppMain}>
+            {won && <h1>You Won!</h1>}
             <Board puzzle={data.puzzle} onChange={handleOnChange} />
          </main>
       </div>
