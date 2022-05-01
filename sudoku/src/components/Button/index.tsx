@@ -1,10 +1,5 @@
 import React from 'react'
 
-/*
-- takes in buttonText
-- takes in onClick function
-*/
-
 export interface ButtonProps {
     buttonText: string;
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void

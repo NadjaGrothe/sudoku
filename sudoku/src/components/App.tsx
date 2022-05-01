@@ -5,10 +5,35 @@ import _ from "lodash";
 
 import style from "./App.module.css";
 import Board from "./Board";
+import Button from "./Button";
 
 function App() {
    // useMemo to prevent generating new puzzles while playing
-   const data = useMemo(() => {
+   // const data = useMemo(() => {
+   //    const creator = new SudokuCreator({ childMatrixSize: 3 });
+   //    const generateSudoku = creator.createSudoku();
+
+   //    const puzzle: number[][] = generateSudoku.puzzle.map((arr) =>
+   //       arr.map((num) => {
+   //          if (num >= 0) return num + 1;
+   //          return num;
+   //       })
+   //    );
+
+   //    const solution: number[][] = generateSudoku.solution.map((arr) =>
+   //       arr.map((num) => {
+   //          if (num >= 0) return num + 1;
+   //          return num;
+   //       })
+   //    );
+
+   //    return { puzzle, solution };
+   // }, []);
+
+   //* generation of new Sudoku puzzle
+   function generateNewSudoku() {
+      
+      
       const creator = new SudokuCreator({ childMatrixSize: 3 });
       const generateSudoku = creator.createSudoku();
 
@@ -25,18 +50,25 @@ function App() {
             return num;
          })
       );
+      
+      // FIXME: find a way to clear previous input field values on Button Click to avoid leftover numbers from previous game
+      setBoard(puzzle);
+      setSolution(solution);
+   }
 
-      return { puzzle, solution };
-   }, []);
-
-   //* Set board state to generated Sudoku puzzle
-   const [board, setBoard] = useState<number[][]>(data.puzzle);
+   //* Set board/solution state to generated Sudoku
+   const [board, setBoard] = useState<number[][] | undefined>();
+   const [solution, setSolution] = useState<number[][] | undefined>();
    //* player won state
    const [won, setWon] = useState<boolean>(false);
 
    useEffect(() => {
-      solutionValidation(board, data.solution);
-   }, [board, data.solution]);
+      generateNewSudoku();
+   }, []);
+
+   useEffect(() => {
+      solutionValidation(board, solution);
+   }, [board, solution]);
 
    //* update board state on player input
    function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -53,13 +85,15 @@ function App() {
       );
 
       // update board state to reflect new player input Value
-      let tempBoard = _.cloneDeep(board);
-      tempBoard[rowIndex][squareIndex] = inputValue;
-      setBoard(tempBoard);
+      if (board) {
+         let tempBoard = _.cloneDeep(board);
+         tempBoard[rowIndex][squareIndex] = inputValue;
+         setBoard(tempBoard);
+      }
    }
 
    //* Solution validation functionality
-   function solutionValidation(board: number[][], solution: number[][]) {
+   function solutionValidation(board?: number[][], solution?: number[][]) {
       // check if current board state is the same as generated solution
       if (JSON.stringify(board) === JSON.stringify(solution)) {
          setWon(true);
@@ -73,7 +107,10 @@ function App() {
          </header>
          <main className={style.AppMain}>
             {won && <h1>You Won!</h1>}
-            <Board puzzle={data.puzzle} onChange={handleOnChange} />
+            {board && 
+            <Board puzzle={board} onChange={handleOnChange} />
+            }
+            <Button buttonText="New Game" onClick={generateNewSudoku} />
          </main>
       </div>
    );
