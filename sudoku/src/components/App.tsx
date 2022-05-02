@@ -1,13 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { SudokuCreator } from "@algorithm.ts/sudoku";
 // lodash used to create deep copy of board state
-import _ from "lodash";
+import _, { words } from "lodash";
 
 import style from "./App.module.css";
 import Board from "./Board";
 import Button from "./Button";
 
 function App() {
+   //! don't need this anymore
    // useMemo to prevent generating new puzzles while playing
    // const data = useMemo(() => {
    //    const creator = new SudokuCreator({ childMatrixSize: 3 });
@@ -32,8 +33,6 @@ function App() {
 
    //* generation of new Sudoku puzzle
    function generateNewSudoku() {
-      
-      
       const creator = new SudokuCreator({ childMatrixSize: 3 });
       const generateSudoku = creator.createSudoku();
 
@@ -50,16 +49,30 @@ function App() {
             return num;
          })
       );
-      
+
       // FIXME: find a way to clear previous input field values on Button Click to avoid leftover numbers from previous game
-      setBoard(puzzle);
+      setInitialBoard(puzzle);
+      setPlayingBoard(puzzle);
       setSolution(solution);
    }
 
-   //* Set board/solution state to generated Sudoku
-   const [board, setBoard] = useState<number[][] | undefined>();
+   function handleClick() {
+      window.location.reload();
+   //   const test = Array.from(document.querySelectorAll("input")).forEach((input)=>input.value="")
+   //   console.log(test);
+          
+      generateNewSudoku();
+   }
+
+   //* States
+   /* - initialBoard: to create grid with generated sudoku & active/inactive squares
+      - playingBoard: stores player input values for solution verification
+      - solution: solution of generated sudoku; used to compare with playingBoard
+      - won: keeps track of wether the player has successfully solved the sudoku
+    */
+   const [initialBoard, setInitialBoard] = useState<number[][] | undefined>();
+   const [playingBoard, setPlayingBoard] = useState(initialBoard);
    const [solution, setSolution] = useState<number[][] | undefined>();
-   //* player won state
    const [won, setWon] = useState<boolean>(false);
 
    useEffect(() => {
@@ -67,8 +80,8 @@ function App() {
    }, []);
 
    useEffect(() => {
-      solutionValidation(board, solution);
-   }, [board, solution]);
+      solutionValidation(playingBoard, solution);
+   }, [playingBoard, solution]);
 
    //* update board state on player input
    function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -85,17 +98,20 @@ function App() {
       );
 
       // update board state to reflect new player input Value
-      if (board) {
-         let tempBoard = _.cloneDeep(board);
+      if (playingBoard) {
+         let tempBoard = _.cloneDeep(playingBoard);
          tempBoard[rowIndex][squareIndex] = inputValue;
-         setBoard(tempBoard);
+         setPlayingBoard(tempBoard);
       }
    }
 
    //* Solution validation functionality
-   function solutionValidation(board?: number[][], solution?: number[][]) {
+   function solutionValidation(
+      playingBoard?: number[][],
+      solution?: number[][]
+   ) {
       // check if current board state is the same as generated solution
-      if (JSON.stringify(board) === JSON.stringify(solution)) {
+      if (JSON.stringify(playingBoard) === JSON.stringify(solution)) {
          setWon(true);
       }
    }
@@ -107,10 +123,10 @@ function App() {
          </header>
          <main className={style.AppMain}>
             {won && <h1>You Won!</h1>}
-            {board && 
-            <Board puzzle={board} onChange={handleOnChange} />
-            }
-            <Button buttonText="New Game" onClick={generateNewSudoku} />
+            {initialBoard && (
+               <Board puzzle={initialBoard} onChange={handleOnChange} />
+            )}
+            <Button buttonText="New Game" onClick={handleClick} />
          </main>
       </div>
    );
