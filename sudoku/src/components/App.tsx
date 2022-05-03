@@ -56,21 +56,18 @@ function App() {
       setSolution(solution);
    }
 
-   function handleClick() {
-      window.location.reload();
-   //   const test = Array.from(document.querySelectorAll("input")).forEach((input)=>input.value="")
-   //   console.log(test);
-          
-      generateNewSudoku();
-   }
-
    //* States
-   /* - initialBoard: to create grid with generated sudoku & active/inactive squares
-      - playingBoard: stores player input values for solution verification
-      - solution: solution of generated sudoku; used to compare with playingBoard
-      - won: keeps track of wether the player has successfully solved the sudoku
-    */
-   const [initialBoard, setInitialBoard] = useState<number[][] | undefined>();
+   /* 
+   - emptyBoard: creating empty playing grid, to reset input values when generating new game
+   - initialBoard: to create grid with generated sudoku & active/inactive squares
+   - playingBoard: stores player input values for solution verification
+   - solution: solution of generated sudoku; used to compare with playingBoard
+   - won: keeps track of wether the player has successfully solved the sudoku
+   */
+   const emptyBoard: number[][] = Array(9).fill(Array(9).fill(null));
+   const [initialBoard, setInitialBoard] = useState<number[][] | undefined>(
+      emptyBoard
+   );
    const [playingBoard, setPlayingBoard] = useState(initialBoard);
    const [solution, setSolution] = useState<number[][] | undefined>();
    const [won, setWon] = useState<boolean>(false);
@@ -126,7 +123,7 @@ function App() {
             {initialBoard && (
                <Board puzzle={initialBoard} onChange={handleOnChange} />
             )}
-            <Button buttonText="New Game" onClick={handleClick} />
+            <Button buttonText="New Game" onClick={generateNewSudoku} />
          </main>
       </div>
    );
