@@ -95,6 +95,9 @@ function App() {
       generateNewSudoku()
    }
 
+   /* FIXME: INPUT FIELDS: player input value is not being cleared when clicking "New Game" Button → player input values overwrite the square values of the newly generated puzzle
+   (before adding the emptyBoard, the values of the previously generated puzzle would remain, they are now being cleared - "just" the resetting of the values entered by the player are not being cleared yet ) */
+
    return (
       <div className={style.App}>
          <header className={style.AppHeader}>
