@@ -8,29 +8,6 @@ import Board from "./Board";
 import Button from "./Button";
 
 function App() {
-   //! don't need this anymore
-   // useMemo to prevent generating new puzzles while playing
-   // const data = useMemo(() => {
-   //    const creator = new SudokuCreator({ childMatrixSize: 3 });
-   //    const generateSudoku = creator.createSudoku();
-
-   //    const puzzle: number[][] = generateSudoku.puzzle.map((arr) =>
-   //       arr.map((num) => {
-   //          if (num >= 0) return num + 1;
-   //          return num;
-   //       })
-   //    );
-
-   //    const solution: number[][] = generateSudoku.solution.map((arr) =>
-   //       arr.map((num) => {
-   //          if (num >= 0) return num + 1;
-   //          return num;
-   //       })
-   //    );
-
-   //    return { puzzle, solution };
-   // }, []);
-
    //* generation of new Sudoku puzzle
    function generateNewSudoku() {
       const creator = new SudokuCreator({ childMatrixSize: 3 });
@@ -50,7 +27,6 @@ function App() {
          })
       );
 
-      // FIXME: find a way to clear previous input field values on Button Click to avoid leftover numbers from previous game
       setInitialBoard(puzzle);
       setPlayingBoard(puzzle);
       setSolution(solution);
@@ -107,7 +83,7 @@ function App() {
       playingBoard?: number[][],
       solution?: number[][]
    ) {
-      // check if current board state is the same as generated solution
+      // checks if current board state is the same as generated solution
       if (JSON.stringify(playingBoard) === JSON.stringify(solution)) {
          setWon(true);
       }
