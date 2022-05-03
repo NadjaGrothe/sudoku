@@ -89,6 +89,12 @@ function App() {
       }
    }
 
+   //* New Game Button functionality
+   function handleClick(){
+      setWon(false)
+      generateNewSudoku()
+   }
+
    return (
       <div className={style.App}>
          <header className={style.AppHeader}>
@@ -99,7 +105,7 @@ function App() {
             {initialBoard && (
                <Board puzzle={initialBoard} onChange={handleOnChange} />
             )}
-            <Button buttonText="New Game" onClick={generateNewSudoku} />
+            <Button buttonText="New Game" onClick={handleClick} />
          </main>
       </div>
    );
